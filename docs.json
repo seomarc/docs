@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Squidy Documentation",
   "colors": {
-    "primary": "#3B82F6",
-    "light": "#60A5FA",
-    "dark": "#1E40AF"
+    "primary": "#ff716b",
+    "light": "#ff9a96",
+    "dark": "#e55a54"
   },
   "favicon": "/favicon.svg",
   "navigation": {
