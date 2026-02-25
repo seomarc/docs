@@ -1,0 +1,83 @@
+---
+title: "Visão Geral"
+description: "Arquitetura do Squidy"
+---
+
+# Arquitetura
+
+O Squidy segue uma arquitetura limpa baseada em **Ports & Adapters** (Arquitetura Hexagonal).
+
+## Diagrama
+
+```
+┌─────────────────────────────────────────┐
+│              CLI Layer                  │
+│         (Typer + Rich UI)               │
+└──────────────────┬──────────────────────┘
+                   │
+┌──────────────────▼──────────────────────┐
+│           Application Layer             │
+│    (Use Cases: Init, Audit, Status)     │
+└──────────────────┬──────────────────────┘
+                   │
+┌──────────────────▼──────────────────────┐
+│            Domain Layer                 │
+│  (Project, Config, AuditResult, etc)    │
+└──────────────────┬──────────────────────┘
+                   │
+┌──────────────────▼──────────────────────┐
+│           Ports (Interfaces)            │
+│  (AIProvider, FileSystem, Storage)      │
+└──────────────────┬──────────────────────┘
+                   │
+┌──────────────────▼──────────────────────┐
+│          Adapters (Implementações)      │
+│  (OpenAI, Anthropic, LocalFS, etc)      │
+└─────────────────────────────────────────┘
+```
+
+## Camadas
+
+### 1. CLI Layer
+Interface com o usuário:
+- Comandos Typer
+- UI com Rich (tabelas, painéis, spinner)
+- Formatação de saída
+
+### 2. Application Layer
+Casos de uso:
+- `InitUseCase` - Setup de projeto
+- `AuditUseCase` - Auditoria
+- `StatusUseCase` - Status rápido
+
+### 3. Domain Layer
+Entidades e regras:
+- `Project` - Representação do projeto
+- `Config` - Configurações
+- `AuditResult` - Resultado de auditoria
+
+### 4. Ports
+Interfaces abstratas:
+- `AIProvider` - Provedores de IA
+- `FileSystem` - Sistema de arquivos
+- `Storage` - Persistência
+
+### 5. Adapters
+Implementações concretas:
+- `OpenAIAdapter` / `AnthropicAdapter`
+- `LocalFileSystem` / `MockFileSystem`
+
+## Benefícios
+
+- **Testável** - Fácil mockar dependências
+- **Extensível** - Novos adapters sem mudar core
+- **Manutenível** - Separação clara de responsabilidades
+- **Flexível** - Troca de provedores de IA
+
+## Fluxo de Dados
+
+```
+Usuário → CLI → Use Case → Domain → Port → Adapter → External
+              ↑___________________________________________|
+                        (retorno)
+```

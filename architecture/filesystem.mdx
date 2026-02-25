@@ -1,0 +1,77 @@
+---
+title: "Sistema de Arquivos"
+description: "Abstração do sistema de arquivos no Squidy"
+---
+
+# Sistema de Arquivos
+
+O Squidy usa uma abstração de sistema de arquivos para facilitar testes.
+
+## Interface (Port)
+
+```python
+class FileSystem(ABC):
+    @abstractmethod
+    def read(self, path: str) -> str:
+        """Lê conteúdo do arquivo"""
+        pass
+    
+    @abstractmethod
+    def write(self, path: str, content: str):
+        """Escreve conteúdo no arquivo"""
+        pass
+    
+    @abstractmethod
+    def exists(self, path: str) -> bool:
+        """Verifica se arquivo existe"""
+        pass
+    
+    @abstractmethod
+    def mkdir(self, path: str):
+        """Cria diretório"""
+        pass
+```
+
+## Implementações
+
+### LocalFileSystem
+
+Implementação para uso real no sistema de arquivos local.
+
+```python
+from squidy.adapters.filesystem.local_fs import LocalFileSystem
+
+fs = LocalFileSystem()
+content = fs.read("./readme-agent.md")
+```
+
+### MockFileSystem
+
+Implementação em memória para testes.
+
+```python
+from squidy.adapters.filesystem.mock_fs import MockFileSystem
+
+fs = MockFileSystem()
+fs.write("/test/file.md", "conteúdo")
+assert fs.exists("/test/file.md")
+```
+
+## Uso nos Use Cases
+
+Injeção de dependência permite trocar implementações:
+
+```python
+# Produção
+use_case = InitUseCase(fs=LocalFileSystem())
+
+# Teste
+use_case = InitUseCase(fs=MockFileSystem())
+```
+
+## Benefícios
+
+- **Testes rápidos** - Sem I/O de disco
+- **Testes determinísticos** - Sem dependência de estado
+- **Paralelismo** - Testes isolados
+- **CI/CD** - Funciona em qualquer ambiente

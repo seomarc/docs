@@ -1,0 +1,104 @@
+---
+title: "squidy audit"
+description: "Audita a saúde do projeto Squidy"
+---
+
+# squidy audit
+
+Audita a saúde do projeto verificando estrutura, consistência e atualizações.
+
+## Uso
+
+```bash
+squidy audit [PATH] [OPTIONS]
+```
+
+## Argumentos
+
+| Argumento | Descrição | Padrão |
+|-----------|-----------|--------|
+| `PATH` | Diretório do projeto | Diretório atual |
+
+## Opções
+
+| Opção | Descrição |
+|-------|-----------|
+| `--format`, `-f` | Formato de saída: `text`, `json` | `text` |
+| `--fix` | Aplica correções automáticas | `False` |
+| `--verbose`, `-v` | Saída detalhada | `False` |
+| `--help` | Mostra ajuda do comando |
+
+## Exemplos
+
+### Auditoria básica
+
+```bash
+squidy audit
+```
+
+### Auditoria de projeto específico
+
+```bash
+squidy audit ./meu-projeto
+```
+
+### Saída em JSON
+
+```bash
+squidy audit -f json
+```
+
+### Aplicar correções
+
+```bash
+squidy audit --fix
+```
+
+## Checkers
+
+O audit executa verificações em múltiplas áreas:
+
+### StructureChecker
+Verifica se todos os arquivos obrigatórios existem:
+- `readme-agent.md`
+- `.squidy/manifest.json`
+- Arquivos em `doc/`
+
+### KanbanChecker
+Analisa o kanban do projeto:
+- WIP limit respeitado
+- Tarefas bloqueadas
+- Épicos sem tasks
+
+### FreshnessChecker
+Identifica arquivos desatualizados:
+- `constituicao.md` > 30 dias
+- `oraculo.md` sem atualização
+- Tasks concluídas não arquivadas
+
+### ConsistencyChecker
+Verifica consistência entre arquivos:
+- IDs de tasks únicos
+- Referências de épicos válidas
+- Tags consistentes
+
+## Saída de Exemplo
+
+```
+🦑 Audit Report
+
+Estrutura:     ✅ 10/10 arquivos OK
+Kanban:        ⚠️  2 tarefas acima do WIP
+Freshness:     ⚠️  constituicao.md (45 dias)
+Consistência:  ✅ Tudo OK
+
+Score: 85/100
+```
+
+## Correções Automáticas
+
+Com `--fix`, o Squidy pode:
+- Criar arquivos faltantes
+- Arquivar tasks concluídas
+- Atualizar índices
+- Corrigir referências quebradas

@@ -1,0 +1,85 @@
+---
+title: "Auditoria"
+description: "Como funciona o sistema de auditoria do Squidy"
+---
+
+# Auditoria
+
+O sistema de auditoria do Squidy verifica a saúde e consistência do projeto.
+
+## Checkers
+
+### StructureChecker
+
+Verifica se a estrutura de arquivos está completa.
+
+**Verifica:**
+- ✅ `readme-agent.md` existe
+- ✅ `.squidy/manifest.json` existe
+- ✅ Diretório `doc/` existe
+- ✅ Arquivos obrigatórios em `doc/`
+
+**Erros comuns:**
+- Arquivos deletados acidentalmente
+- Projeto movido sem estrutura
+
+### KanbanChecker
+
+Analisa a saúde do Kanban.
+
+**Verifica:**
+- ✅ WIP limit respeitado (máx 3)
+- ✅ Tasks não bloqueadas por muito tempo
+- ✅ Épicos têm tasks associadas
+- ✅ IDs únicos
+
+**Warnings:**
+- Muitas tasks em progresso
+- Tasks bloqueadas > 7 dias
+- Épicos órfãos
+
+### FreshnessChecker
+
+Identifica arquivos desatualizados.
+
+**Limites:**
+| Arquivo | Limite |
+|---------|--------|
+| `constituicao.md` | 30 dias |
+| `oraculo.md` | 14 dias |
+| `politicas.md` | 60 dias |
+| Tasks concluídas | 7 dias para arquivar |
+
+### ConsistencyChecker
+
+Verifica consistência entre arquivos.
+
+**Verifica:**
+- ✅ Referências de épicos válidas
+- ✅ Tasks mencionadas existem
+- ✅ Tags consistentes
+- ✅ IDs no formato correto
+
+## Pontuação
+
+O score de auditoria varia de 0 a 100:
+
+| Range | Status |
+|-------|--------|
+| 90-100 | 🟢 Excelente |
+| 70-89  | 🟡 Bom |
+| 50-69  | 🟠 Precisa atenção |
+| 0-49   | 🔴 Crítico |
+
+## Correções Automáticas
+
+Com `--fix`, o Squidy pode:
+
+1. **Criar arquivos faltantes** - Gera templates básicos
+2. **Arquivar tasks** - Move concluídas para histórico
+3. **Atualizar índices** - Reconstrói índice-diario.md
+4. **Corrigir IDs** - Normaliza formatos
+
+<Note>
+Sempre revise as correções antes de aplicar em produção.
+</Note>

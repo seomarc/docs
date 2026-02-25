@@ -1,0 +1,83 @@
+---
+title: "Kanban"
+description: "Sistema de gestão de tarefas do Squidy"
+---
+
+# Kanban
+
+O Squidy inclui um sistema de gestão de tarefas baseado em Kanban.
+
+## Estrutura Hierárquica
+
+```markdown
+## 🔥 ÉPICOS
+### ÉPICO-001: Sistema de Autenticação
+**Prioridade:** P0 | **Complexidade:** M
+**Tasks:** TASK-001, TASK-002
+
+## 📋 BACKLOG
+### TASK-001: Setup JWT [ÉPICO-001]
+**Complexidade:** S | **Prioridade:** P0
+**Subtarefas:**
+- [ ] SUB-001: Instalar biblioteca (XS - 30min)
+- [ ] SUB-002: Configurar middleware (S - 1h)
+
+## 🏗️ EM PROGRESSO (WIP: 1/3)
+- [ ] TASK-001: Setup JWT
+
+## ✅ CONCLUÍDO
+- [x] TASK-000: Setup inicial
+```
+
+## Níveis
+
+| Nível | Prefixo | Exemplo | Descrição |
+|-------|---------|---------|-----------|
+| Épico | `ÉPICO-` | ÉPICO-001 | Grande iniciativa |
+| Task | `TASK-` | TASK-001 | Unidade de trabalho |
+| Subtarefa | `SUB-` | SUB-001 | Passo específico |
+
+## Prioridades
+
+| Prioridade | Significado |
+|------------|-------------|
+| P0 | Crítico - bloqueante |
+| P1 | Alto - importante |
+| P2 | Médio - desejável |
+| P3 | Baixo - futuro |
+
+## Complexidade (T-shirt Sizes)
+
+| Tamanho | Tempo estimado |
+|---------|----------------|
+| XS | ~30 min |
+| S | ~1-2 horas |
+| M | ~4-8 horas |
+| L | ~1-2 dias |
+| XL | ~3-5 dias |
+| XXL | +1 semana (decompor) |
+
+## WIP Limit
+
+Limite de trabalho em progresso:
+- Máximo 3 tasks simultâneas
+- Evita multitasking
+- Foco em entregar
+
+## Workflow
+
+1. **Criar** épicos no início do projeto
+2. **Decompor** em tasks durante o planejamento
+3. **Mover** tasks para "Em Progresso" ao iniciar
+4. **Completar** subtarefas uma a uma
+5. **Revisar** e marcar como concluído
+
+## Comandos Relacionados
+
+```bash
+# Ver status do kanban
+squidy status
+
+# Auditar estrutura
+squidy audit
+```

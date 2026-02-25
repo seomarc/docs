@@ -1,0 +1,92 @@
+---
+title: "CLI Reference"
+description: "Referência completa dos comandos CLI"
+---
+
+# CLI Reference
+
+Referência completa dos comandos disponíveis no Squidy.
+
+## Comandos Globais
+
+### `--version`
+
+Mostra a versão do Squidy.
+
+```bash
+squidy --version
+# squidy 2.0.1
+```
+
+### `--help`
+
+Mostra ajuda geral ou de um comando específico.
+
+```bash
+squidy --help
+squidy init --help
+```
+
+## Comandos Principais
+
+### init
+
+Inicializa um novo projeto.
+
+```bash
+squidy init [PATH] [--dry-run] [--manual]
+```
+
+**Argumentos:**
+- `PATH` - Diretório do projeto (padrão: atual)
+
+**Opções:**
+- `--dry-run` - Simula sem criar arquivos
+- `--manual` - Setup sem IA
+
+### audit
+
+Audita o projeto.
+
+```bash
+squidy audit [PATH] [-f FORMAT] [--fix] [-v]
+```
+
+**Argumentos:**
+- `PATH` - Diretório do projeto
+
+**Opções:**
+- `-f, --format` - Formato: `text`, `json`
+- `--fix` - Aplica correções
+- `-v, --verbose` - Saída detalhada
+
+### status
+
+Mostra status do projeto.
+
+```bash
+squidy status [PATH]
+```
+
+**Alias:**
+```bash
+squidy doctor
+```
+
+## Variáveis de Ambiente
+
+| Variável | Descrição | Obrigatória |
+|----------|-----------|-------------|
+| `OPENAI_API_KEY` | Chave da OpenAI | Opcional* |
+| `ANTHROPIC_API_KEY` | Chave da Anthropic | Opcional* |
+
+\* Pelo menos uma é necessária para uso com IA.
+
+## Códigos de Saída
+
+| Código | Significado |
+|--------|-------------|
+| 0 | Sucesso |
+| 1 | Erro geral |
+| 2 | Erro de validação |
+| 3 | Projeto não encontrado |

@@ -1,0 +1,76 @@
+---
+title: "Governança"
+description: "Entenda como o Squidy estrutura a governança do projeto"
+---
+
+# Governança
+
+O Squidy implementa uma estrutura de governança completa para projetos com Agentes de IA.
+
+## Princípios
+
+### 1. Contexto Persistente
+A IA tem acesso a todo o contexto do projeto através de arquivos estruturados.
+
+### 2. Regras Explícitas
+Proibições, restrições e convenções são documentadas de forma clara.
+
+### 3. Rastreabilidade
+Todas as decisões são registradas e podem ser auditadas.
+
+### 4. Autonomia Controlada
+A IA tem autonomia dentro dos limites definidos.
+
+## Arquivos de Governança
+
+### constituicao.md
+Define os princípios fundamentais:
+- **Propósito** - Por que o projeto existe
+- **Princípios** - Valores e diretrizes
+- **Proibições** - O que nunca fazer
+- **Definition of Done** - Critérios de aceitação
+
+### politicas.md
+Especifica as regras técnicas:
+- **Stack** - Tecnologias permitidas
+- **Convenções** - Padrões de código
+- **Padrões** - Arquitetura e design
+- **Processo** - Fluxo de trabalho
+
+### oraculo.md
+Registra decisões de arquitetura (ADRs):
+- Decisões tomadas
+- Contexto e motivação
+- Alternativas consideradas
+- Consequências
+
+## Ciclo de Governança
+
+```
+┌─────────────┐
+│   Setup     │ ← squidy init
+│   Inicial   │
+└──────┬──────┘
+       ▼
+┌─────────────┐
+│ Desenvolver │ ← IA segue regras
+│   com IA    │
+└──────┬──────┘
+       ▼
+┌─────────────┐
+│   Auditar   │ ← squidy audit
+│   Regular   │
+└──────┬──────┘
+       ▼
+┌─────────────┐
+│  Atualizar  │ ← Evoluir regras
+│  Regras     │
+└─────────────┘
+```
+
+## Benefícios
+
+- **Consistência** - A IA sempre segue as mesmas regras
+- **Qualidade** - Definition of Done garante padrões
+- **Segurança** - Proibições previnem erros graves
+- **Evolução** - Decisões são documentadas e revisáveis

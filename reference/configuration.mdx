@@ -1,0 +1,74 @@
+---
+title: "Configuração"
+description: "Opções de configuração do Squidy"
+---
+
+# Configuração
+
+O Squidy pode ser configurado via variáveis de ambiente ou arquivo `.env`.
+
+## Variáveis de Ambiente
+
+### Provedores de IA
+
+| Variável | Descrição | Exemplo |
+|----------|-----------|---------|
+| `OPENAI_API_KEY` | Chave da OpenAI | `sk-...` |
+| `ANTHROPIC_API_KEY` | Chave da Anthropic | `sk-ant-...` |
+| `DEFAULT_AI_PROVIDER` | Provedor padrão | `openai` ou `anthropic` |
+
+### Configurações Gerais
+
+| Variável | Descrição | Padrão |
+|----------|-----------|--------|
+| `SQUIDY_LOG_LEVEL` | Nível de log | `INFO` |
+| `SQUIDY_DRY_RUN` | Modo simulação | `false` |
+
+## Arquivo .env
+
+Crie um arquivo `.env` no diretório do projeto:
+
+```bash
+# Provedores de IA
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxx
+ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxx
+
+# Configurações
+SQUIDY_LOG_LEVEL=DEBUG
+```
+
+O Squidy carrega automaticamente as variáveis do `.env`.
+
+## Manifesto do Projeto
+
+O arquivo `.squidy/manifest.json` contém metadados do projeto:
+
+```json
+{
+  "version": "2.0.1",
+  "name": "meu-projeto",
+  "created_at": "2026-02-25T10:00:00Z",
+  "updated_at": "2026-02-25T15:30:00Z",
+  "config": {
+    "language": "python",
+    "framework": "fastapi",
+    "database": "postgresql"
+  }
+}
+```
+
+**Campos:**
+- `version` - Versão do Squidy usada
+- `name` - Nome do projeto
+- `created_at` - Data de criação
+- `updated_at` - Última atualização
+- `config` - Configurações específicas
+
+## Prioridade de Configuração
+
+Configurações são carregadas na ordem (última prevalece):
+
+1. Valores padrão
+2. Variáveis de ambiente do sistema
+3. Arquivo `.env`
+4. Argumentos de linha de comando

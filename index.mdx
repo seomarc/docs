@@ -1,97 +1,132 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Squidy - Documentação"
+description: "Setup inteligente para projetos com Agentes de IA"
 ---
 
-## Setting up
+# 🦑 Squidy
 
-Get your documentation site up and running in minutes.
+**Setup inteligente para projetos com Agentes de IA**
+
+Governança, Auditoria e Documentação Automática para Claude, GPT-4, Cursor e mais.
 
 <Card
-  title="Start here"
+  title="Comece em 2 minutos"
   icon="rocket"
   href="/quickstart"
   horizontal
 >
-  Follow our three step quickstart guide.
+  Instale o Squidy e configure seu primeiro projeto.
 </Card>
 
-## Make it yours
+## O Problema
 
-Design a docs site that looks great and empowers your users.
+Você usa **Claude**, **ChatGPT** ou **Cursor** para programar, mas:
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+- 🤯 A IA esquece tudo na próxima conversa
+- 📝 Você reescreve os mesmos requisitos toda semana
+- 🎨 O agente fica "criativo" e muda sua arquitetura
+- 📂 Seu projeto vira bagunça porque ninguém documenta
+- ⏱️ Gasta 30 min configurando prompt antes de codar
 
-## Create beautiful pages
+**O Squidy resolve isso em 2 minutos.**
 
-Everything you need to create world-class documentation.
+## O Que é o Squidy?
+
+O **Squidy** é uma CLI que cria automaticamente a estrutura de governança para projetos com Agentes de IA.
 
 <Columns cols={2}>
   <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
+    title="Setup com IA"
+    icon="robot"
+    href="/commands/init"
   >
-    Use MDX to style your docs pages.
+    Converse com IA sobre seu projeto e receba documentação completa.
   </Card>
   <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
+    title="Auditoria"
+    icon="magnifying-glass"
+    href="/commands/audit"
   >
-    Add sample code to demonstrate how to use your product.
+    Verifique a saúde do projeto e identifique problemas.
   </Card>
   <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
+    title="Kanban"
+    icon="table-columns"
+    href="/concepts/kanban"
   >
-    Display images and other media.
+    Gestão de tarefas com Épicos → Tasks → Subtarefas.
   </Card>
   <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
+    title="Governança"
+    icon="shield-check"
+    href="/concepts/governance"
   >
-    Write once and reuse across your docs.
+    Regras, proibições e Definition of Done para sua IA.
   </Card>
 </Columns>
 
-## Need inspiration?
+## Instalação Rápida
+
+```bash
+pip install squidy
+squidy --version
+```
 
 <Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
+  title="Veja o guia completo de instalação"
+  icon="download"
+  href="/installation"
 >
-  Browse our showcase of exceptional documentation sites.
+  Opções de instalação via pip, pipx ou desenvolvimento.
+</Card>
+
+## Estrutura Criada
+
+O Squidy gera uma estrutura completa de governança:
+
+```
+meu-projeto/
+├── readme-agent.md          # 🤖 Guia completo para o agente
+├── .squidy/
+│   └── manifest.json        # 📋 Manifesto do projeto
+├── doc/
+│   ├── AGENT.md             # 🎯 Referência rápida
+│   ├── constituicao.md      # ⚖️ Princípios e regras
+│   ├── oraculo.md           # 🧙 Decisões de arquitetura
+│   ├── politicas.md         # 📋 Stack e convenções
+│   ├── kanban.md            # 📊 Gestão de tarefas
+│   ├── emergencia.md        # 🚨 Bloqueios críticos
+│   ├── indice-diario.md     # 📑 Índice do histórico
+│   └── contexto-sessao.md   # 💾 Cache do estado
+└── diario/
+    └── 2026-02.md           # 📅 Log de decisões
+```
+
+## Próximos Passos
+
+<Columns cols={2}>
+  <Card
+    title="Quickstart"
+    icon="play"
+    href="/quickstart"
+  >
+    Configure seu primeiro projeto em minutos.
+  </Card>
+  <Card
+    title="Comandos"
+    icon="terminal"
+    href="/commands/init"
+  >
+    Aprenda os comandos principais do Squidy.
+  </Card>
+</Columns>
+
+---
+
+<Card
+  title="Suporte"
+  icon="headset"
+  href="mailto:contato@squidy.run"
+>
+  Precisa de ajuda? Entre em contato.
 </Card>

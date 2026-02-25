@@ -1,0 +1,85 @@
+---
+title: "API Reference"
+description: "Documentação da API do Squidy"
+---
+
+# API Reference
+
+Esta seção contém a documentação da API interna do Squidy.
+
+<Note>
+O Squidy é primariamente uma CLI. A API documentada aqui é para uso interno e extensões.
+</Note>
+
+## Módulos Principais
+
+### Core
+
+Módulos de domínio e lógica de negócio:
+
+- `squidy.core.domain` - Entidades e value objects
+- `squidy.core.ports` - Interfaces (ports & adapters)
+
+### Adapters
+
+Implementações das interfaces:
+
+- `squidy.adapters.providers` - Provedores de IA
+- `squidy.adapters.filesystem` - Sistema de arquivos
+
+### Audit
+
+Sistema de auditoria:
+
+- `squidy.audit.engine` - Motor de auditoria
+- `squidy.audit.checkers` - Verificadores
+- `squidy.audit.detectors` - Detectores
+
+### CLI
+
+Interface de linha de comando:
+
+- `squidy.cli.app` - Aplicação principal
+- `squidy.cli.commands` - Comandos
+
+## Uso Programático
+
+```python
+from squidy.core.domain.project import Project
+from squidy.audit.engine import AuditEngine
+
+# Carregar projeto
+project = Project.from_path("./meu-projeto")
+
+# Executar auditoria
+engine = AuditEngine()
+result = engine.audit(project)
+
+print(result.score)  # 0-100
+print(result.issues)  # Lista de problemas
+```
+
+## Extensão
+
+Para criar um checker personalizado:
+
+```python
+from squidy.audit.checkers.base import BaseChecker
+
+class MeuChecker(BaseChecker):
+    def check(self, project):
+        # Sua lógica aqui
+        return CheckResult(
+            name="meu-checker",
+            passed=True,
+            message="Tudo OK"
+        )
+```
+
+<Card
+  title="Arquitetura"
+  icon="diagram-project"
+  href="/architecture/overview"
+>
+  Entenda a arquitetura do Squidy.
+</Card>

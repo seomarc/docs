@@ -1,0 +1,87 @@
+---
+title: "Templates"
+description: "Templates de arquivos gerados pelo Squidy"
+---
+
+# Templates
+
+O Squidy usa templates Jinja2 para gerar a documentação do projeto.
+
+## Estrutura de Templates
+
+```
+squidy/generation/templates/
+├── readme-agent.md.j2
+├── agent.md.j2
+├── constituicao.md.j2
+├── oraculo.md.j2
+├── politicas.md.j2
+├── kanban.md.j2
+├── emergencia.md.j2
+└── manifest.json.j2
+```
+
+## Variáveis Disponíveis
+
+Todos os templates recebem um objeto `project`:
+
+```python
+{
+  "name": "nome-do-projeto",
+  "description": "Descrição do projeto",
+  "stack": {
+    "language": "python",
+    "framework": "fastapi",
+    "database": "postgresql"
+  },
+  "conventions": [...],
+  "rules": [...],
+  "created_at": "..."
+}
+```
+
+## Exemplo de Template
+
+```jinja2
+# {{ project.name }}
+
+## Descrição
+{{ project.description }}
+
+## Stack
+- **Linguagem:** {{ project.stack.language }}
+- **Framework:** {{ project.stack.framework }}
+- **Database:** {{ project.stack.database }}
+
+## Convenções
+{% for convention in project.conventions %}
+- {{ convention }}
+{% endfor %}
+```
+
+## Personalização (Futuro)
+
+Em versões futuras, você poderá:
+
+- Criar templates customizados
+- Estender templates existentes
+- Definir templates por stack
+
+## Template Engine
+
+O Squidy usa Jinja2 com configurações específicas:
+
+```python
+from jinja2 import Environment, PackageLoader
+
+env = Environment(
+    loader=PackageLoader('squidy', 'templates'),
+    trim_blocks=True,
+    lstrip_blocks=True
+)
+```
+
+Isso garante:
+- **Whitespace control** - Saída limpa
+- **Escaping automático** - Segurança
+- **Extensibilidade** - Macros e includes

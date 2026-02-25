@@ -1,0 +1,95 @@
+---
+title: "Instalação"
+description: "Como instalar o Squidy no seu ambiente"
+---
+
+# 📦 Instalação
+
+## Via pip (recomendado)
+
+```bash
+pip install squidy
+```
+
+Verifique a instalação:
+
+```bash
+squidy --version
+```
+
+## Via pipx (isolado)
+
+Para instalação isolada sem conflitos:
+
+```bash
+pipx install squidy
+squidy --version
+```
+
+## Desenvolvimento
+
+Clone o repositório e instale em modo de desenvolvimento:
+
+```bash
+git clone https://github.com/seomarc/squidyrun.git
+cd squidyrun
+python -m venv venv && source venv/bin/activate  # Linux/Mac
+# ou: python -m venv venv && venv\Scripts\activate  # Windows
+pip install -e ".[dev]"
+squidy --version
+```
+
+## Requisitos
+
+- **Python:** 3.9 ou superior
+- **Sistema:** Linux, macOS, Windows (WSL recomendado)
+
+## Variáveis de Ambiente
+
+Configure as chaves de API para uso com IA:
+
+```bash
+# OpenAI
+export OPENAI_API_KEY="sk-..."
+
+# Anthropic (Claude)
+export ANTHROPIC_API_KEY="sk-ant-..."
+```
+
+Ou use um arquivo `.env` no diretório do projeto.
+
+## Atualização
+
+```bash
+pip install --upgrade squidy
+```
+
+## Desinstalação
+
+```bash
+pip uninstall squidy
+```
+
+## Solução de Problemas
+
+### Comando não encontrado
+
+Adicione o diretório de scripts do Python ao PATH:
+
+```bash
+# Linux/Mac
+export PATH="$HOME/.local/bin:$PATH"
+
+# Windows
+set PATH=%APPDATA%\Python\Scripts;%PATH%
+```
+
+### Conflitos de dependência
+
+Use ambiente virtual:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install squidy
+```

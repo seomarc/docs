@@ -1,0 +1,68 @@
+---
+title: "squidy status"
+description: "Mostra o status atual do projeto"
+---
+
+# squidy status
+
+Mostra o status atual do projeto de forma rápida.
+
+## Uso
+
+```bash
+squidy status [PATH]
+```
+
+## Argumentos
+
+| Argumento | Descrição | Padrão |
+|-----------|-----------|--------|
+| `PATH` | Diretório do projeto | Diretório atual |
+
+## Exemplos
+
+### Status do diretório atual
+
+```bash
+squidy status
+```
+
+### Status de projeto específico
+
+```bash
+squidy status ./meu-projeto
+```
+
+## Informações Exibidas
+
+- ✅ Status da estrutura Squidy
+- 📋 Tarefas em progresso (WIP)
+- 🚨 Bloqueios críticos
+- 📅 Última atualização
+- 🏷️ Tags do projeto
+- 📊 Versão do manifesto
+
+## Saída de Exemplo
+
+```
+🦑 Project Status
+
+📁 Projeto: minha-api
+🎯 Versão: 2.0.1
+📅 Atualizado: 2026-02-25
+
+📋 Kanban:
+   Em progresso: 2/3
+   Backlog: 5 tarefas
+   Concluído: 12 tarefas
+
+🚨 Bloqueios: 0
+
+✅ Estrutura: OK
+```
+
+## Alias
+
+```bash
+squidy doctor    # Mesmo que status
+```

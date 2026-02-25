@@ -1,0 +1,97 @@
+---
+title: "squidy init"
+description: "Inicializa um novo projeto com estrutura de governança"
+---
+
+# squidy init
+
+Inicializa um novo projeto com estrutura completa de governança para Agentes de IA.
+
+## Uso
+
+```bash
+squidy init [PATH] [OPTIONS]
+```
+
+## Argumentos
+
+| Argumento | Descrição | Padrão |
+|-----------|-----------|--------|
+| `PATH` | Diretório do projeto | Diretório atual |
+
+## Opções
+
+| Opção | Descrição |
+|-------|-----------|
+| `--dry-run` | Simula sem criar arquivos |
+| `--manual` | Setup sem entrevista de IA |
+| `--help` | Mostra ajuda do comando |
+
+## Exemplos
+
+### Setup interativo (padrão)
+
+```bash
+squidy init
+```
+
+### Projeto específico
+
+```bash
+squidy init ./minha-api
+```
+
+### Dry run (simulação)
+
+```bash
+squidy init --dry-run
+```
+
+### Setup manual
+
+```bash
+squidy init --manual
+```
+
+## Fluxo de Entrevista
+
+O Squidy conduz uma entrevista inteligente em 5 fases:
+
+1. **Visão Geral** - Tipo de projeto e stack
+2. **Arquitetura** - Padrões e decisões técnicas
+3. **Governança** - Regras e restrições
+4. **Workflow** - Processo de desenvolvimento
+5. **Refinamento** - Ajustes finais
+
+## Arquivos Gerados
+
+```
+projeto/
+├── readme-agent.md          # Guia principal para IA
+├── .squidy/manifest.json    # Manifesto do projeto
+├── doc/
+│   ├── AGENT.md             # Referência rápida
+│   ├── constituicao.md      # Princípios e regras
+│   ├── oraculo.md           # Decisões de arquitetura
+│   ├── politicas.md         # Stack e convenções
+│   ├── kanban.md            # Gestão de tarefas
+│   ├── emergencia.md        # Bloqueios críticos
+│   ├── indice-diario.md     # Índice de logs
+│   └── contexto-sessao.md   # Cache de sessão
+└── diario/
+    └── YYYY-MM.md           # Log mensal
+```
+
+## Próximos Passos
+
+Após executar `init`, instrua seu agente de IA:
+
+> "Leia o arquivo `readme-agent.md` e siga o ritual de onboarding"
+
+<Card
+  title="squidy audit"
+  icon="magnifying-glass"
+  href="/commands/audit"
+>
+  Aprenda a auditar seu projeto.
+</Card>

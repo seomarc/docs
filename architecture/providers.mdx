@@ -1,0 +1,88 @@
+---
+title: "Provedores de IA"
+description: "Como funcionam os provedores de IA no Squidy"
+---
+
+# Provedores de IA
+
+O Squidy suporta múltiplos provedores de IA através de uma interface unificada.
+
+## Interface (Port)
+
+```python
+class AIProvider(ABC):
+    @abstractmethod
+    def generate(self, prompt: str, context: dict) -> str:
+        """Gera resposta da IA"""
+        pass
+    
+    @abstractmethod
+    def interview(self, answers: list) -> dict:
+        """Conduz entrevista estruturada"""
+        pass
+```
+
+## Provedores Suportados
+
+### OpenAI
+
+Modelos: GPT-4o, GPT-4o-mini
+
+```python
+from squidy.adapters.providers.openai_adapter import OpenAIAdapter
+
+provider = OpenAIAdapter(api_key="sk-...")
+response = provider.generate(prompt, context)
+```
+
+### Anthropic
+
+Modelos: Claude 3 Sonnet, Claude 3 Haiku
+
+```python
+from squidy.adapters.providers.anthropic_adapter import AnthropicAdapter
+
+provider = AnthropicAdapter(api_key="sk-ant-...")
+response = provider.generate(prompt, context)
+```
+
+## Configuração
+
+Defina a chave via variável de ambiente:
+
+```bash
+export OPENAI_API_KEY="sk-..."
+export ANTHROPIC_API_KEY="sk-ant-..."
+```
+
+Ou em arquivo `.env`:
+
+```
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+## Seleção de Provedor
+
+O Squidy seleciona automaticamente baseado em:
+1. Qual chave está configurada
+2. Preferência do usuário (futuro)
+
+## Adicionar Novo Provedor
+
+Para adicionar um novo provedor:
+
+1. Crie uma classe herdando de `AIProvider`
+2. Implemente os métodos abstratos
+3. Registre no factory
+
+```python
+class NovoProvider(AIProvider):
+    def generate(self, prompt: str, context: dict) -> str:
+        # Implementação
+        pass
+    
+    def interview(self, answers: list) -> dict:
+        # Implementação
+        pass
+```
