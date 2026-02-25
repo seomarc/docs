@@ -18,7 +18,8 @@
             "pages": [
               "index",
               "quickstart",
-              "installation"
+              "installation",
+              "links"
             ]
           },
           {
@@ -81,7 +82,7 @@
         },
         {
           "anchor": "GitHub",
-          "href": "https://github.com/seomarc",
+          "href": "https://github.com/seomarc/squidyrun",
           "icon": "github"
         }
       ]
@@ -116,7 +117,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/seomarc",
+      "github": "https://github.com/seomarc/squidyrun",
       "linkedin": "https://linkedin.com/in/seomarc",
       "youtube": "https://youtube.com/@seomarcos"
     }
